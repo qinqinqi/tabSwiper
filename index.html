@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基于swiper3实现的移动端的选项卡轮播</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/rem.js"></script>
+    <script src="js/jquery-1.1.2.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+</head>
+<body>
+    <div class="grade">
+        <div class="gradeMenu">
+            <ul>
+                <li>小学</li>
+                <li class="active">初中</li>
+                <li>高中</li>
+            </ul>
+        </div>
+        <div class="gradeCon">
+            <div class="swiper-container swiper-container-1">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="images/g1_02.png" alt=""></div>
+                    <div class="swiper-slide"><img src="images/g2_02.png" alt=""></div>
+                    <div class="swiper-slide"><img src="images/g3_02.png" alt=""></div>
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next swiper-button-next-1"></div>
+                <div class="swiper-button-prev swiper-button-prev-1"></div>
+            </div>
+            <div class="swiper-container swiper-container-2 active">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="images/g4_02.png" alt=""></div>
+                    <div class="swiper-slide"><img src="images/g5_02.png" alt=""></div>
+                    <div class="swiper-slide"><img src="images/g6_02.png" alt=""></div>
+                    <div class="swiper-slide"><img src="images/g7_02.png" alt=""></div>
+                    <div class="swiper-slide"><img src="images/g8_02.png" alt=""></div>
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next swiper-button-next-2"></div>
+                <div class="swiper-button-prev swiper-button-prev-2"></div>
+            </div>
+            <div class="swiper-container swiper-container-3">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="images/g9_02.png" alt=""></div>
+                    <div class="swiper-slide"><img src="images/g10_02.png" alt=""></div>
+                    <div class="swiper-slide"><img src="images/g11_02.png" alt=""></div>
+                    <div class="swiper-slide"><img src="images/g12_02.png" alt=""></div>
+                    <div class="swiper-slide"><img src="images/g13_02.png" alt=""></div>
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next swiper-button-next-3"></div>
+                <div class="swiper-button-prev swiper-button-prev-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var swiper1,swiper2,swiper3;
+        swiper2=createSwiper(2);
+        $(".gradeMenu ul li").on("click",function(){
+            var _index=$(this).index();
+            $(this).addClass("active").siblings().removeClass("active");
+            $(".gradeCon .swiper-container").eq(_index).addClass("active").siblings().removeClass("active");
+            if(_index==0){
+                if(swiper1!=undefined){
+                    swiper1.destroy();
+                }
+                swiper1=createSwiper(1);
+            }else if(_index==1){
+                if(swiper2!=undefined){
+                    swiper2.destroy();
+                }
+                swiper2=createSwiper(2);
+            }else{
+                swiper3=createSwiper(3);
+            }
+        })
+        function createSwiper(index){
+            var swiper= new Swiper('.gradeCon .swiper-container-'+index, {
+                loop : true,
+                prevButton:'.gradeCon .swiper-button-prev-'+index,
+                nextButton:'.gradeCon .swiper-button-next-'+index,
+            });
+            return swiper;
+        }
+    </script>
+</body>
+</html>
