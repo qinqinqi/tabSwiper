@@ -1,5 +1,6 @@
 *{margin: 0;padding: 0;list-style: none;}
 img {border: 0;max-width: 100%;}
+
 .grade{max-width: 750px;margin: 50px auto;}
 .gradeMenu{background: url("../images/bg11_02.jpg") no-repeat center;background-size: contain;width: 100%;height: 1.02rem;overflow: hidden;}
 .gradeMenu ul{width: 80%;margin: .15rem auto;}
